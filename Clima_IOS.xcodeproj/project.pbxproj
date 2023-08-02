@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ED1425C2A7A9EF500B99C8F /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1425B2A7A9EF500B99C8F /* WeatherManager.swift */; };
 		0EEEFDD62A7A5BA50026DBB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEEFDD52A7A5BA50026DBB1 /* AppDelegate.swift */; };
 		0EEEFDD82A7A5BA50026DBB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEEFDD72A7A5BA50026DBB1 /* SceneDelegate.swift */; };
 		0EEEFDDA2A7A5BA50026DBB1 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEEFDD92A7A5BA50026DBB1 /* WeatherViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ED1425B2A7A9EF500B99C8F /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		0EEEFDD22A7A5BA50026DBB1 /* Clima_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EEEFDD52A7A5BA50026DBB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EEEFDD72A7A5BA50026DBB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		0EEEFE052A7A5DE40026DBB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0ED1425B2A7A9EF500B99C8F /* WeatherManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				0EEEFDDA2A7A5BA50026DBB1 /* WeatherViewController.swift in Sources */,
 				0EEEFDD62A7A5BA50026DBB1 /* AppDelegate.swift in Sources */,
+				0ED1425C2A7A9EF500B99C8F /* WeatherManager.swift in Sources */,
 				0EEEFDD82A7A5BA50026DBB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
