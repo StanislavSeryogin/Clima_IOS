@@ -7,11 +7,11 @@
 
 import Foundation
 
-class WeatherManager{
+class WeatherManager {
     let weatherURL = "http://api.openweathermap.org/data/2.5/weather"
     let weatherAPIKey = "bb7f17a8b8d4851f643f47e6049edd89"
     
-    func featchWeather(cityName: String) {
+    func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)?appid=\(weatherAPIKey)&units=metric&q=\(cityName)"
         performRequest(urlString: urlString)
     }
@@ -22,22 +22,34 @@ class WeatherManager{
             // create URL session
             let session = URLSession(configuration: .default)
             // give the session task
-            let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+            let task = session.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                if let safeData = data {
+                    self.parseJSON(weatherData: safeData)
+                }
+            }
             // start the task
             task.resume()
         }
     }
-
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if let error = error {
+    
+    func parseJSON(weatherData: Data) {
+        let decoder = JSONDecoder()
+        do {
+            let decodedDate = try decoder.decode(WeatherDate.self, from: weatherData)
+            let id = decodedDate.weather[0].id
+            let temp = decodedDate.main.temp
+            let name = decodedDate.name
+            let weather = WeatherModel(condotionId: id, cityName: name, temp: temp)
+            
+            print(weather.tempString)
+        } catch {
             print(error)
-            return
-        }
-        
-        if let safeDta = data {
-            let dataString = String(data: safeDta, encoding: .utf8)
-            print(dataString as Any)
         }
     }
-
 }
+
