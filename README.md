@@ -1,4 +1,5 @@
 # Clima_IOS
 
 
-![ezgif-5-aa28104bbe](https://github.com/StanislavSeryogin/Clima_IOS/assets/64367475/a189bc29-f49c-44fb-977e-e560f4e2d275)
+
+![ezgif-5-25dfb42d99](https://github.com/StanislavSeryogin/Clima_IOS/assets/64367475/2faa96fe-c653-4eb6-b0e8-36b9700e2863)
