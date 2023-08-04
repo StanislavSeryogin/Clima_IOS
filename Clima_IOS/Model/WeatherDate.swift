@@ -2,7 +2,7 @@
 //  WeatherDate.swift
 //  Clima_IOS
 //
-//  Created by Stanislav Seryogin on 03.08.2023.
+//  Created by Stanislav Seryogin on 04.08.2023.
 //
 
 import Foundation
