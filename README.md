@@ -1,5 +1,8 @@
 # Clima_IOS
 
+#### - Shows current weather.
+#### - shows the weather in the selected city.
 
 
-![ezgif-5-25dfb42d99](https://github.com/StanislavSeryogin/Clima_IOS/assets/64367475/2faa96fe-c653-4eb6-b0e8-36b9700e2863)
+#
+![Clima_IOS](https://github.com/StanislavSeryogin/Clima_IOS/assets/64367475/f7f924e6-e6ad-42a9-8e42-bc0eca353019)
