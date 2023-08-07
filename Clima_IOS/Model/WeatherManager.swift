@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol WeatherManagerDelegeta {
-    func didUpdeteWeather(weather:WeatherModel)
+    func didUpdeteWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+    func didFailWithError(error: Error)
 }
 
 class WeatherManager {
@@ -19,24 +21,29 @@ class WeatherManager {
     
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)?appid=\(weatherAPIKey)&units=metric&q=\(cityName)"
-        performRequest(urlString: urlString)
+        performRequest(with: urlString)
     }
     
-    func performRequest(urlString: String) {
+    func fetchWeather(latidude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let urlString = "\(weatherURL)?appid=\(weatherAPIKey)&units=metric&lat=\(latidude)&lon=\(longitude)"
+        performRequest(with: urlString)
+    }
+    
+    func performRequest(with urlString: String) {
         // create URL
         if let url = URL(string: urlString) {
             // create URL session
             let session = URLSession(configuration: .default)
             // give the session task
             let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print(error)
+                if error != nil {
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeData = data {
-                    if let weather = self.parseJSON(weatherData: safeData) {
-                        self.delegate?.didUpdeteWeather(weather: weather)
+                    if let weather = self.parseJSON(safeData) {
+                        self.delegate?.didUpdeteWeather(self, weather: weather)
                     }
                 }
             }
@@ -45,7 +52,7 @@ class WeatherManager {
         }
     }
     
-    func parseJSON(weatherData: Data) -> WeatherModel? {
+    func parseJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
             let decodedDate = try decoder.decode(WeatherDate.self, from: weatherData)
@@ -57,9 +64,11 @@ class WeatherManager {
             return weather
         
         } catch {
-            print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
     }
+    
+    
 }
 
